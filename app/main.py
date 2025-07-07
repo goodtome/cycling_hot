@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import history
+from app.api import history, team, rider
 
 app = FastAPI(title="Cycling App API")
 
@@ -9,8 +9,8 @@ app = FastAPI(title="Cycling App API")
 app.include_router(history.router, prefix="/history", tags=["历史"])
 # app.include_router(events.router, prefix="/events", tags=["赛事"])
 # app.include_router(models.router, prefix="/models", tags=["车型"])
-# app.include_router(riders.router, prefix="/riders", tags=["车手"])
-# app.include_router(teams.router, prefix="/teams", tags=["车队"])
+app.include_router(team.router, prefix="/teams", tags=["车队"])
+app.include_router(rider.router, prefix="/riders", tags=["车手"])
 # app.include_router(users.router, prefix="/users", tags=["用户"])
 
 @app.get("/")
